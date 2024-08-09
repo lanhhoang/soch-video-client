@@ -5,7 +5,7 @@ import { RoomContext } from "../context/RoomContext";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { socket } = useContext(RoomContext);
+  const { connectSocket } = useContext(RoomContext);
 
   const roomId = uuidv4();
 
@@ -15,9 +15,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    socket.on("me", (data) => {
-      console.log("[Client] Socket ID", data);
-    });
+    connectSocket();
   }, []);
 
   return (

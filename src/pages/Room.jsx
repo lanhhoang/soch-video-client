@@ -6,11 +6,10 @@ import Leave from "../components/Leave";
 
 const Room = () => {
   const { roomId } = useParams();
-  const { socket } = useContext(RoomContext);
+  const { createRoom } = useContext(RoomContext);
 
   useEffect(() => {
-    console.log("[Client] Room created", roomId);
-    socket.emit("create-room", { roomId });
+    createRoom(roomId);
   }, []);
 
   return (
