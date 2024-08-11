@@ -56,7 +56,11 @@ export const RoomProvider = ({ children }) => {
 
   useEffect(() => {
     const meId = uuidv4(); // user id from database
-    const peer = new Peer(meId);
+    const peer = new Peer(meId, {
+      host: "soch-webrtc.onrender.com",
+      path: "/",
+      secure: true,
+    });
     setMe(peer);
     console.log("[Client] Me", peer);
 
